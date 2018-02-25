@@ -13,6 +13,13 @@ import javafx.scene.control.Slider;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  *
@@ -56,11 +63,12 @@ public class SortingsViewController implements Initializable {
         }
         //sortingMethod = new 
     }
-    
+    //hhhh
     @FXML
     public void arraySizeBar_ValueChanged(){
         this.ArraySizeLabel.setText(Integer.toString((int)this.arraySizeSlider.getValue()));
-        
+             
+
         
     }
     @FXML
@@ -69,12 +77,32 @@ public class SortingsViewController implements Initializable {
     }
     @FXML
     public void SortBtnClick(){
-        sortingMethod.sort(model.getUnSortedList());
+        //sortingMethod.sort(model.getUnSortedList());
+        drawShapes();  
     }
 
     
-    public void drawShapes(int[] a ){
-        
+    public void drawShapes(){//int[] a ){
+       GraphicsContext g = recCanvas.getGraphicsContext2D();
+      // g.fillRect(400,400,10,1000);
+       //g.fill
+       for (int i = 0 ; i < 10;i++){ //model.getArraySize();i++){
+          // g.fillRect(10, 10, 20, 100);
+        }
+
+        g.fillRect(10, 10, 5, 100);
+         g.fillRect(20, 10, 5, 100);
+          g.fillRect(30, 10, 5, 100);
+           g.fillRect(40, 10, 5, 100);
+            g.fillRect(50, 10, 5, 100);
+             g.fillRect(60, 10, 5, 100);
+              g.fillRect(70, 10, 5, 100);
+       
+       
+       
+       
+       
+       
     }
     @Override
    public void initialize(URL url, ResourceBundle rb){
@@ -91,11 +119,6 @@ public class SortingsViewController implements Initializable {
     
     
     
-//       @FXML
-//    public void cancel() {
-//        Stage stage = (Stage) cancelBtn.getScene().getWindow();
-//        stage.close();
-//    }
-    
+
     
 }

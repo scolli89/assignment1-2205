@@ -15,7 +15,7 @@
       <Label layoutX="243.0" layoutY="473.0" text="Array Size" />
       <Label fx:id="ArraySizeLabel" layoutX="528.0" layoutY="473.0" />
       <ComboBox fx:id="algoComBox" layoutX="76.0" layoutY="468.0" onAction="#setSortStrategy" prefHeight="25.0" prefWidth="135.0" promptText="Select Algorithm" />
-      <Slider fx:id="arraySizeSlider" blockIncrement="3.0" layoutX="320.0" layoutY="470.0" max="150.0" min="32.0" onMouseClicked="#arraySizeBar_ValueChanged" prefHeight="24.0" prefWidth="185.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="arraySizeSlider" blockIncrement="3.0" layoutX="320.0" layoutY="470.0" max="150.0" min="32.0" onDragDetected="#arraySizeBar_ValueChanged" onInputMethodTextChanged="#arraySizeBar_ValueChanged" onMouseClicked="#arraySizeBar_ValueChanged" onMouseDragged="#arraySizeBar_ValueChanged" onMouseReleased="#RandomThenDraw" prefHeight="24.0" prefWidth="185.0" showTickMarks="true" snapToTicks="true" value="50.0" />
       <Canvas fx:id="recCanvas" height="420.0" layoutX="40.0" layoutY="24.0" width="650.0" />
    </children>
 </AnchorPane>

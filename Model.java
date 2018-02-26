@@ -11,33 +11,43 @@ package assignment1;
  */
 public class Model {
    //member variables
-    private int[] intArray;
+    private int[] array;
     private int arraySize;
     //methods
+    // constructor
+    public Model(){
+      arraySize = 50;
+      reset(arraySize);
+    }
     // this method resets the integer array to an array of the given size filled with values from 1 --> size
     // and returns an array to be eq
     public int[] reset (int size){
-        int [] temp = new int[size];
-        
-        for (int i = 0 ; i < size; i ++){
-            temp[i]= (int )(Math.random() * size + 1);
+        arraySize = size;
+        //int [] temp = new int[size];
+        array = new int [arraySize];
+        for (int i = 0 ; i < arraySize; i ++){
+            array[i]= (int )(Math.random() * arraySize + 1);
             boolean matchFound = false ;
             
-            for (int y = 0; y < size;y++){
-                if(temp[i] == temp[y]){ // if the newest 
+            for (int y = 0; y < arraySize;y++){
+                if(array[i] == array[y]){ // if the newest 
                     matchFound = true;
                 }
             }
-            if (matchFound = true){
+            if (matchFound == true){
                 i--;
             }
         }
+        for (int i = 0 ; i < arraySize; i++){
+            System.out.println(Integer.toString(array[i]));
+        }
         
-        return temp;
+        
+        return array;
     }
     
     public int[] getUnSortedList(){
-        return intArray;
+        return array;
     }
     
     public int getArraySize(){

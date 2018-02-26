@@ -4,31 +4,25 @@
  * and open the template in the editor.
  */
 package assignment1;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 /**
  *
  * @author Sean_2
  */
 public class SortingsViewController implements Initializable {
-    
-   //member variables
 
+    //member variables
     @FXML
     private Button resetBtn;
 
@@ -46,79 +40,70 @@ public class SortingsViewController implements Initializable {
 
     @FXML
     private ComboBox<String> algoComBox;
-    
-    private Model model;
-  
+
+    private Model _model;
+
     private SortingStrategy sortingMethod;
-    
-    
-    
-     // member functions
+
+    // member functions
     @FXML
-    public void setSortStrategy(){
-        if ("Selection Sort".equals(algoComBox.getValue())){ // selection Sort has been chosen
-            this.sortingMethod = new SelectionSort(); 
+    public void setSortStrategy() {
+        if ("Selection Sort".equals(algoComBox.getValue())) { // selection Sort has been chosen
+            this.sortingMethod = new SelectionSort();
         } else { // merge sort has been selected
             this.sortingMethod = new MergeSort();
         }
         //sortingMethod = new 
     }
+
     //hhhh
     @FXML
-    public void arraySizeBar_ValueChanged(){
-        this.ArraySizeLabel.setText(Integer.toString((int)this.arraySizeSlider.getValue()));
-             
+    public void arraySizeBar_ValueChanged() {
+        this.ArraySizeLabel.setText(Integer.toString((int) this.arraySizeSlider.getValue()));
 
-        
     }
+
     @FXML
-    public void resetBtnClick(){
-        model.reset((int)this.arraySizeSlider.getValue()); // call the reset function
+    public void resetBtnClick() {
+        _model.reset((int) this.arraySizeSlider.getValue()); // call the reset function
     }
+
     @FXML
-    public void SortBtnClick(){
+    public void SortBtnClick() {
         //sortingMethod.sort(model.getUnSortedList());
-        drawShapes();  
+        drawShapes();
     }
 
-    
-    public void drawShapes(){//int[] a ){
-       GraphicsContext g = recCanvas.getGraphicsContext2D();
-      // g.fillRect(400,400,10,1000);
-       //g.fill
-       for (int i = 0 ; i < 10;i++){ //model.getArraySize();i++){
-          // g.fillRect(10, 10, 20, 100);
+    @FXML
+    public void RandomThenDraw() {
+        //model.reset((int)this.arraySizeSlider.getValue());
+        // Need to randmize and set the array 
+        // Need to then draw the array to screen.
+
+    }
+
+    public void drawShapes() {//int[] a ){
+        GraphicsContext g = recCanvas.getGraphicsContext2D();
+        // g.fillRect(400,400,10,1000);
+        //g.fill
+        int size = 10;
+        for (int i = 0; i < size; i++) {
+
+            g.fillRect((recCanvas.widthProperty().getValue() * i / size) + 2, //x position
+                    recCanvas.heightProperty().getValue() - (recCanvas.heightProperty().getValue() / size) * i, // y position
+                    (recCanvas.widthProperty().getValue() / size) - 2, // width
+                    (recCanvas.heightProperty().getValue() / size) * i); // height
+
         }
 
-        g.fillRect(10, 10, 5, 100);
-         g.fillRect(20, 10, 5, 100);
-          g.fillRect(30, 10, 5, 100);
-           g.fillRect(40, 10, 5, 100);
-            g.fillRect(50, 10, 5, 100);
-             g.fillRect(60, 10, 5, 100);
-              g.fillRect(70, 10, 5, 100);
-       
-       
-       
-       
-       
-       
     }
-    @Override
-   public void initialize(URL url, ResourceBundle rb){
-       // set the items in the combo box
-        algoComBox.getItems().removeAll(algoComBox.getItems());
-        algoComBox.getItems().addAll("Selection Sort","Merge Sort");
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // set the items in the combo box
+        algoComBox.getItems().removeAll(algoComBox.getItems());
+        algoComBox.getItems().addAll("Selection Sort", "Merge Sort");
+        _model = new Model();
+    }
+
 }
